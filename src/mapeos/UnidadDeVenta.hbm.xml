@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="datos.UnidadDeVenta" table="unidadDeVenta">
+        <id column="idUnidadDeVenta" name="idUnidadDeVenta">
+            <generator class="identity" />
+        </id>
+        <property column="nombreComercial" name="nombreComercial" type="string" />
+        <many-to-one name="responsableACargo" class="datos.Staff" column="idStaff" not-null="true" />
+        <many-to-one name="festival" class="datos.Festival" column="idFestival" not-null="true" />
+        <property column="superficie" name="superficie" type="double" />
+        <property column="codigoUnico" name="codigoUnico" type="string" />
+        <set name="platosOfrecidos" table="plato" order-by="idPlato asc" inverse="true"
+             lazy="true" fetch="select">
+            <key column="idUnidadDeVenta" not-null="true" />
+            <one-to-many class="datos.Plato" />
+        </set>
+        <set name="personalACargo" table="staff" order-by="idStaff asc" inverse="true"
+             lazy="true" fetch="select">
+            <key column="idUnidadDeVenta" not-null="true" />
+            <one-to-many class="datos.Staff" />
+        </set>
+    </class>
+</hibernate-mapping>
