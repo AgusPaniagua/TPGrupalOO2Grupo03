@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "https://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="datos.Costo" table="costo" >    
+         <id name="idCosto" column="idCosto">           
+            <generator class="foreign">
+				<param name="property">festival</param>
+			</generator>
+        </id>               
+        <property name="porSuperficie" column="porSuperficie" type="double"/>
+        <property name="porMontaje" column="porMontaje" type="double"/>
+        <property name="plusPorElectricidad" column="plusPorElectricidad" type="boolean"/>
+        <property name="sueldoBase" column="sueldoBase" type="double"/>
+        
+        <one-to-one name="festival" class="datos.Festival"></one-to-one>
+    </class>
+</hibernate-mapping>

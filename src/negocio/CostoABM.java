@@ -1,0 +1,31 @@
+package negocio;
+
+import dao.CostoDao;
+import datos.Costo;
+import datos.Festival;
+
+
+
+public class CostoABM {
+	CostoDao dao = new CostoDao();
+
+	public Costo traer(long idContacto) {
+		Costo c = dao.traer(idContacto);
+		return c;
+	}
+	
+	public int agregar(double porSuperficie,double porMontaje,boolean plusPorElectricidad,double sueldoBase,Festival festival) {
+		// Lanzar excepción si el cliente ya tiene un contacto
+		Costo c = new Costo(porSuperficie , porMontaje,plusPorElectricidad,sueldoBase,festival);
+		return dao.agregar(c);
+	}
+
+	public void modificar(Costo c) {
+		dao.actualizar(c);
+	}
+
+	public void eliminar(long idcCosto) {
+		Costo c = dao.traer(idcCosto);
+		dao.eliminar(c);
+	}
+}
