@@ -1,0 +1,43 @@
+package negocio;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import dao.FestivalDao;
+import datos.Costo;
+import datos.Festival;
+
+
+public class FestivalABM {
+	
+	FestivalDao dao = new FestivalDao();
+
+	public Festival traer(long idFestival) {
+		Festival f = dao.traer(idFestival);
+		return f;
+	}
+
+
+	
+	public int agregar( String nombre, LocalDate temporada,LocalDate fechaInicio,LocalDate fechaFin,Costo costo) {
+		Festival f = new Festival( nombre, temporada, fechaInicio, fechaFin,costo);
+		return dao.agregar(f);
+	}
+
+	public void modificar(Festival f) {
+		dao.actualizar(f);
+	}
+
+	public void eliminar(long idFestival) {
+		Festival f = dao.traer(idFestival);
+		dao.eliminar(f);
+	}
+
+	public List<Festival> traer() {
+		return dao.traer();
+	}
+
+	public Festival traerClienteYContacto(long idFestival) {
+		return dao.traerFestivalYCostos(idFestival);
+	}
+}
