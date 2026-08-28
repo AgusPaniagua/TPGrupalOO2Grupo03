@@ -2,24 +2,34 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="datos.UnidadDeVenta" table="unidadDeVenta">
-        <id column="idUnidadDeVenta" name="idUnidadDeVenta">
+    <class name="datos.UnidadDeVenta" table="unidad_de_venta">
+        <id column="id_unidad_de_venta" name="idUnidadDeVenta">
             <generator class="identity" />
         </id>
-        <property column="nombreComercial" name="nombreComercial" type="string" />
-        <many-to-one name="responsableACargo" class="datos.Staff" column="idStaff" not-null="true" />
-        <many-to-one name="festival" class="datos.Festival" column="idFestival" not-null="true" />
+        <property column="nombre_comercial" name="nombreComercial" type="string" />
+        <many-to-one name="responsableACargo" class="datos.Staff" column="id_staff" not-null="true" />
+        <many-to-one name="festival" class="datos.Festival" column="id_festival" not-null="true" />
         <property column="superficie" name="superficie" type="double" />
-        <property column="codigoUnico" name="codigoUnico" type="string" />
-        <set name="platosOfrecidos" table="plato" order-by="idPlato asc" inverse="true"
+        <property column="codigo_unico" name="codigoUnico" type="string" />
+        <set name="platosOfrecidos" table="plato" order-by="id_plato asc" inverse="true"
              lazy="true" fetch="select">
-            <key column="idUnidadDeVenta" not-null="true" />
+            <key column="id_unidad_de_venta" not-null="true" />
             <one-to-many class="datos.Plato" />
         </set>
-        <set name="personalACargo" table="staff" order-by="idStaff asc" inverse="true"
+        <set name="personalACargo" table="staff" order-by="id_staff asc" inverse="true"
              lazy="true" fetch="select">
-            <key column="idUnidadDeVenta" not-null="true" />
+            <key column="id_unidad_de_venta" not-null="true" />
             <one-to-many class="datos.Staff" />
         </set>
+        <joined-subclass name="datos.FoodTruck" table="food_truck">
+            <key column="id_food_truck"/>
+            <property column="patente" name="patente" type="string"/>
+            <property column="conexion_electrica" name="conexionElectrica" type="boolean"/>
+        </joined-subclass>
+        <joined-subclass name="datos.PuestoDesarmable" table="puesto_desarmable">
+            <key column="id_puesto_desarmable"/>
+            <property column="cantidad_de_carpas" name="cantidadDeCarpas" type="int"/>
+            <property column="tiempo" name="tiempo" type="int"/>
+        </joined-subclass>
     </class>
 </hibernate-mapping>

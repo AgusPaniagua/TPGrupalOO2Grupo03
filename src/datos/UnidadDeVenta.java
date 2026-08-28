@@ -1,7 +1,7 @@
 package datos;
 import java.util.Set;
-public class UnidadDeVenta {
-    private long idUnidadDeVenta;
+public abstract class UnidadDeVenta {
+    protected long idUnidadDeVenta;
     private String nombreComercial;
     private Staff responsableACargo;
     private double superficie;
