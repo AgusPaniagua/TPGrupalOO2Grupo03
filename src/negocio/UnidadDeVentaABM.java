@@ -8,21 +8,20 @@ public class UnidadDeVentaABM {
         return udao.traer(idUnidadDeVenta);
     }
 
-    public int agregar(String nombreComercial, Staff responsableACargo, double superficie, String codigoUnico,Festival festival, Set<Plato> platosOfrecidos, Set<Staff> personalACargo){
-        if(responsableACargo == null){
+    public int agregar(UnidadDeVenta unidad){
+        if(unidad.getResponsableACargo() == null){
             throw new RuntimeException("ERROR: debe haber un responsable a cargo");
         }
-        if(festival==null){
+        if(unidad.getFestival()==null){
             throw new RuntimeException("ERROR: debe haber un festival asociado");
         }
-        if(codigoUnico == null || codigoUnico.length()!=10){
+        if(unidad.getCodigoUnico() == null || unidad.getCodigoUnico().length()!=10){
             throw new RuntimeException("ERROR: el codigo debe de tener 10 caracteres");
         }
-        if(udao.traer(codigoUnico)!=null){
+        if(udao.traer(unidad.getCodigoUnico())!=null){
             throw new RuntimeException("ERROR: Ya existe una unidad de venta con el código");
         }
-        UnidadDeVenta u = new UnidadDeVenta(nombreComercial,responsableACargo,superficie,codigoUnico,festival,platosOfrecidos,personalACargo);
-        return udao.agregar(u);
+        return udao.agregar(unidad);
     }
 
     public void modificar(UnidadDeVenta unidad){
