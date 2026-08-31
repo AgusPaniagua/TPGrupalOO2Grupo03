@@ -17,7 +17,10 @@ public class FestivalABM {
 		return f;
 	}
 
-
+	public int agregar( String nombre, LocalDate temporada,LocalDate fechaInicio,LocalDate fechaFin) {
+		Festival f = new Festival( nombre, temporada, fechaInicio, fechaFin);
+		return dao.agregar(f);
+	}
 	
 	public int agregar( String nombre, LocalDate temporada,LocalDate fechaInicio,LocalDate fechaFin,Costo costo) {
 		Festival f = new Festival( nombre, temporada, fechaInicio, fechaFin,costo);
@@ -33,9 +36,6 @@ public class FestivalABM {
 		dao.eliminar(f);
 	}
 
-	public List<Festival> traer() {
-		return dao.traer();
-	}
 
 	public Festival traerClienteYContacto(long idFestival) {
 		return dao.traerFestivalYCostos(idFestival);

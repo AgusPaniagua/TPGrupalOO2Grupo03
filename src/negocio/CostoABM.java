@@ -15,7 +15,7 @@ public class CostoABM {
 	}
 	
 	public int agregar(double porSuperficie,double porMontaje,boolean plusPorElectricidad,double sueldoBase,Festival festival) {
-		// Lanzar excepción si el cliente ya tiene un contacto
+		
 		Costo c = new Costo(porSuperficie , porMontaje,plusPorElectricidad,sueldoBase,festival);
 		return dao.agregar(c);
 	}
