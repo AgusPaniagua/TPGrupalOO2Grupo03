@@ -22,6 +22,17 @@ public class Festival {
 		this.fechaFin = fechaFin;
 		this.costo= costo;
 	}
+	public Festival( String nombre, LocalDate temporada,LocalDate fechaInicio,LocalDate fechaFin ) {
+		super();
+		
+		this.nombre = nombre;
+		this.temporada = temporada;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
+		
+		
+	}
+
 
 	public long getIdFestival() {
 		return idFestival;
