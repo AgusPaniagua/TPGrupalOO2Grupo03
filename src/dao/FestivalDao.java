@@ -88,12 +88,28 @@ public class FestivalDao {
 
 		return lista;
 	}
+	public Festival traerFestivalYUnidadesDeVenta(long idFestival) throws HibernateException {
+	    Festival festival = null;
+
+	    try {
+	        iniciaOperacion();
+
+	        String hql = "from Festival f " + "left join fetch f.unidadDeVenta "+ "where f.idFestival = :idFestival";
+
+	        festival = (Festival) session.createQuery(hql).setParameter("idFestival", idFestival) .uniqueResult();
+
+	    } finally {
+	        session.close();
+	    }
+
+	    return festival;
+	}
 
 	public Festival traerFestivalYCostos(long idFestival) throws HibernateException {
 		Festival objeto = null;
 		try {
 			iniciaOperacion();
-			String hql = "from Flestival f inner join fetch f.costo where f.idFestival = :idFestival";
+			String hql = "from Festival f inner join fetch f.costo where f.idFestival = :idFestival";
 			objeto = (Festival) session.createQuery(hql).setParameter("idFestival", idFestival).uniqueResult();
 
 		} finally {

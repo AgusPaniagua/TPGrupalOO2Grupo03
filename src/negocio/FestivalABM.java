@@ -35,9 +35,11 @@ public class FestivalABM {
 		Festival f = dao.traer(idFestival);
 		dao.eliminar(f);
 	}
+	public Festival traerFestivalYUnidadesDeVenta(long idFestival) {
+	    return dao.traerFestivalYUnidadesDeVenta(idFestival);
+	}
 
-
-	public Festival traerClienteYContacto(long idFestival) {
+	public Festival traerFestivalYCosto(long idFestival) {
 		return dao.traerFestivalYCostos(idFestival);
 	}
 }

@@ -13,12 +13,15 @@
         <property name="temporada" column="temporada" type="java.time.LocalDate" not-null="true"/>
         <property name="fechaInicio" column="fechaInicio" type="java.time.LocalDate" not-null="true"/>
         <property name="fechaFin" column="fechaFin" type="java.time.LocalDate" not-null="true"/>
-     	
+     
         <one-to-one name="costo" class="datos.Costo"></one-to-one>
-        <bag name="unidadesDeVenta">
-            <key column="idFestival"/>
-            <one-to-many class="datos.UnidadDeVenta"/>
-        </bag>
+        
+        <set name="unidadDeVenta" table="unidadDeVenta" order-by="idUnidadDeVenta asc" inverse="true" lazy="true" fetch="select">
+
+    	<key column="idFestival" not-null="true"/>
+   		<one-to-many class="datos.UnidadDeVenta"/>
+
+		</set>
 
   </class>    
 </hibernate-mapping>
