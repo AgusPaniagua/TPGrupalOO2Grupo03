@@ -1,6 +1,7 @@
 package datos;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 public class Festival {
 	private long idFestival;
@@ -9,6 +10,7 @@ public class Festival {
 	private LocalDate fechaInicio;
 	private LocalDate fechaFin;
 	private Costo costo;
+	private Set<UnidadDeVenta> unidadDeVenta;
 	
 
 	public Festival(){}
@@ -80,6 +82,13 @@ public class Festival {
 
 	public void setCosto(Costo costo) {
 		this.costo = costo;
+	}
+	public Set<UnidadDeVenta> getUnidadDeVenta() {
+		return unidadDeVenta;
+	}
+
+	public void setUnidadDeVenta(Set<UnidadDeVenta> unidadDeVenta) {
+		this.unidadDeVenta = unidadDeVenta;
 	}
 
 	@Override

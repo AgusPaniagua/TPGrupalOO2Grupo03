@@ -14,7 +14,7 @@ public class TestAgregarFestivalYCosto {
 
         try {
 
-            long ultimoIdFestival = abmFestival.agregar("LOlaPaluza",LocalDate.of(2026, 12, 17),
+            long ultimoIdFestival = abmFestival.agregar("lollapalooza",LocalDate.of(2026, 12, 17),
             		LocalDate.of(2026, 12, 20), LocalDate.of(2026, 12, 23) );
 
             System.out.printf("Id Festival: %d%n", ultimoIdFestival);
