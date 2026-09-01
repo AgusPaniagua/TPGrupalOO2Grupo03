@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="datos.Staff" table="staff">
+        <id column="id_staff" name="idStaff">
+            <generator class="identity" />
+        </id>
+        <property column="nombre" name="nombre" type="string" />
+        <property column="apellido" name="apellido" type="string" />
+        <property column="dni" name="dni" type="int" />
+        <property column="fecha_de_nacimiento" name="fechaDeNacimiento" type="date" />
+        <property column="fecha_de_ingreso" name="fechaDeIngreso" type="date" />
+        <property column="antiguedad" name="antiguedad" type="int" />
+        <property column="sueldo_base" name="sueldoBase" type="double" />
+
+        <many-to-one name="unidadDeVenta" class="datos.UnidadDeVenta" column="id_unidad_de_venta" not-null="true"/>
+
+        <joined-subclass name="datos.Cocinero" table="cocinero">
+            <key column="id_cocinero"/>
+            <property column="especialidad" name="especialidad" type="string"/>
+            <property column="plus_fijo" name="plusFijo" type="int"/>
+        </joined-subclass>
+
+        <joined-subclass name="datos.Cajero" table="cajero">
+            <key column="id_cajero"/>
+            <property column="turno_de_trabajo" name="turnoDeTrabajo" type="string"/>
+        </joined-subclass>
+    </class>
+</hibernate-mapping>
