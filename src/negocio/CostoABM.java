@@ -9,8 +9,8 @@ import datos.Festival;
 public class CostoABM {
 	CostoDao dao = new CostoDao();
 
-	public Costo traer(long idContacto) {
-		Costo c = dao.traer(idContacto);
+	public Costo traer(long idCosto) {
+		Costo c = dao.traer(idCosto);
 		return c;
 	}
 	
@@ -24,8 +24,8 @@ public class CostoABM {
 		dao.actualizar(c);
 	}
 
-	public void eliminar(long idcCosto) {
-		Costo c = dao.traer(idcCosto);
+	public void eliminar(long idCosto) {
+		Costo c = dao.traer(idCosto);
 		dao.eliminar(c);
 	}
 }
