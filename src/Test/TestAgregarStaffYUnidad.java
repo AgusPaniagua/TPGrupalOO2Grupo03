@@ -25,7 +25,7 @@ public class TestAgregarStaffYUnidad {
             // 2) Unidad de venta SIN responsable todavía
             FoodTruckABM abmFoodTruck = new FoodTruckABM();
             long idUnidad = abmFoodTruck.agregar(
-                    "Food Truck Norte", null, 25.5, "FT00000001",
+                    "Food Truck Norte", null, 25.5, "FT00000004",
                     festival, new HashSet<>(), new HashSet<>(),
                     "AB123CD", true);
             System.out.println("Unidad de venta creada, id: " + idUnidad);

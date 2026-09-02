@@ -5,6 +5,8 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import datos.UnidadDeVenta;
 
+import java.util.List;
+
 public class UnidadDeVentaDao {
     private static Session session;
     private Transaction tx;
@@ -73,5 +75,21 @@ public class UnidadDeVentaDao {
         }finally {
             session.close();
         }return unidad;
+    }
+
+    public List<UnidadDeVenta> listarPorFestival(long idFestival){
+        List<UnidadDeVenta> unidades = null;
+        try{
+            iniciaOperacion();
+            Query<UnidadDeVenta> query = session.createQuery(
+                    "FROM UnidadDeVenta u WHERE u.festival.idFestival = :idFest ORDER BY u.idUnidadDeVenta",
+                    UnidadDeVenta.class
+            );
+            query.setParameter("idFest", idFestival);
+            unidades = query.list();
+        }finally {
+            session.close();
+        }
+        return unidades;
     }
 }

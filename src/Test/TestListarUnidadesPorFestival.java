@@ -1,31 +1,24 @@
 package Test;
-import dao.HibernateUtil;
+
 import datos.FoodTruck;
 import datos.PuestoDesarmable;
 import datos.UnidadDeVenta;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
+import negocio.UnidadDeVentaABM;
 
 import java.util.List;
+
 public class TestListarUnidadesPorFestival {
+
     public static void main(String[] args) {
 
-        long idFestival = 1L; 
+        long idFestival = 1L;
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        UnidadDeVentaABM udABM = new UnidadDeVentaABM();
 
         try {
-            // Consulta HQL polimórfica: trae UnidadDeVenta, pero cada fila
-            // vuelve como su subtipo real (FoodTruck o PuestoDesarmable)
-            Query<UnidadDeVenta> query = session.createQuery(
-                    "FROM UnidadDeVenta u WHERE u.festival.idFestival = :idFest ORDER BY u.idUnidadDeVenta",
-                    UnidadDeVenta.class
-            );
-            query.setParameter("idFest", idFestival);
+            List<UnidadDeVenta> unidades = udABM.listarPorFestival(idFestival);
 
-            List<UnidadDeVenta> unidades = query.list();
-
-            if (unidades.isEmpty()) {
+            if (unidades == null || unidades.isEmpty()) {
                 System.out.println("No hay unidades de venta cargadas para el festival " + idFestival);
                 return;
             }
@@ -44,7 +37,6 @@ public class TestListarUnidadesPorFestival {
                         u.getSuperficie(),
                         u.getCodigoUnico());
 
-                // Datos específicos según el tipo real
                 if (u instanceof FoodTruck ft) {
                     System.out.printf("    -> patente=%s | conexionElectrica=%b%n",
                             ft.getPatente(), ft.isConexionElectrica());
@@ -61,8 +53,8 @@ public class TestListarUnidadesPorFestival {
             System.out.println("FoodTrucks: " + cantidadFoodTrucks);
             System.out.println("PuestosDesarmables: " + cantidadPuestos);
 
-        } finally {
-            session.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

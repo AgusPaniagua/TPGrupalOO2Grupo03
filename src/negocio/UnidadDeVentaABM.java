@@ -1,6 +1,9 @@
 package negocio;
 import dao.UnidadDeVentaDao;
 import datos.UnidadDeVenta;
+
+import java.util.List;
+
 public class UnidadDeVentaABM {
     UnidadDeVentaDao udao = new UnidadDeVentaDao();
 
@@ -39,5 +42,8 @@ public class UnidadDeVentaABM {
             throw new RuntimeException("No se puede eliminar: la unidad tiene personal asignado");
         }
         udao.eliminar(u);
+    }
+    public List<UnidadDeVenta> listarPorFestival(long idFestival){
+        return udao.listarPorFestival(idFestival);
     }
 }
