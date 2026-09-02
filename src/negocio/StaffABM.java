@@ -6,6 +6,8 @@ import datos.Cocinero;
 import datos.Cajero;
 import datos.UnidadDeVenta;
 import java.time.LocalDate;
+import java.util.List;
+import datos.UnidadDeVenta;
 
 public class StaffABM {
     StaffDao dao = new StaffDao();
@@ -33,4 +35,9 @@ public class StaffABM {
         Staff s = dao.traer(idStaff);
         dao.eliminar(s);
     }
+    
+    public List<UnidadDeVenta> traerUnidadesConPersonal() {
+        return dao.traerUnidadesConPersonal();
+    }
+    
 }

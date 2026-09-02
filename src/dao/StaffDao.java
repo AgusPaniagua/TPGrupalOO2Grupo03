@@ -4,6 +4,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import datos.Staff;
+import java.util.List;
+import datos.UnidadDeVenta;
 
 public class StaffDao {
     private static Session session;
@@ -70,4 +72,19 @@ public class StaffDao {
             session.close();
         }
     }
+    
+    public List<UnidadDeVenta> traerUnidadesConPersonal() throws HibernateException {
+        List<UnidadDeVenta> lista = null;
+        try {
+            iniciaOperacion();
+            String hql = "select distinct u from UnidadDeVenta u "
+                    + "left join fetch u.personalACargo "
+                    + "order by u.nombreComercial asc";
+            lista = session.createQuery(hql, UnidadDeVenta.class).getResultList();
+        } finally {
+            session.close();
+        }
+        return lista;
+    }
+    
 }
