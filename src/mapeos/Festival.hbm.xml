@@ -16,9 +16,9 @@
      
         <one-to-one name="costo" class="datos.Costo"></one-to-one>
         
-        <set name="unidadDeVenta" table="unidadDeVenta" order-by="idUnidadDeVenta asc" inverse="true" lazy="true" fetch="select">
+        <set name="unidadDeVenta"  order-by="idUnidadDeVenta asc" inverse="true" lazy="true" fetch="select">
 
-    	<key column="idFestival" not-null="true"/>
+    	<key column="id_festival" not-null="true"/>
    		<one-to-many class="datos.UnidadDeVenta"/>
 
 		</set>

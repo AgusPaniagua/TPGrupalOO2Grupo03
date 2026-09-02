@@ -91,12 +91,10 @@ public abstract class UnidadDeVenta {
         return "UnidadDeVenta{" +
                 "idUnidadDeVenta=" + idUnidadDeVenta +
                 ", nombreComercial='" + nombreComercial + '\'' +
-                ", responsableACargo=" + responsableACargo +
+                ", idResponsableACargo=" + (responsableACargo != null ? responsableACargo.getIdStaff() : null) +
                 ", superficie=" + superficie +
                 ", codigoUnico='" + codigoUnico + '\'' +
-                ", festival=" + festival +
-                ", platosOfrecidos=" + platosOfrecidos +
-                ", personalACargo=" + personalACargo +
+                ", idFestival=" + (festival != null ? festival.getIdFestival() : null) +
                 '}';
     }
 }
