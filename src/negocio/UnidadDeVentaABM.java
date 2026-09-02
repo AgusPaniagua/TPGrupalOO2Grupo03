@@ -9,12 +9,7 @@ public class UnidadDeVentaABM {
     }
 
     public int agregar(UnidadDeVenta unidad){
-        if(unidad.getResponsableACargo() == null){
-            throw new RuntimeException("ERROR: debe haber un responsable a cargo");
-        }
-        if(unidad.getFestival()==null){
-            throw new RuntimeException("ERROR: debe haber un festival asociado");
-        }
+
         if(unidad.getCodigoUnico() == null || unidad.getCodigoUnico().length()!=10){
             throw new RuntimeException("ERROR: el codigo debe de tener 10 caracteres");
         }

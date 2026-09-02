@@ -7,16 +7,16 @@
             <generator class="identity" />
         </id>
         <property column="nombre_comercial" name="nombreComercial" type="string" />
-        <many-to-one name="responsableACargo" class="datos.Staff" column="id_staff" not-null="true" />
+        <many-to-one name="responsableACargo" class="datos.Staff" column="id_staff"  />
         <many-to-one name="festival" class="datos.Festival" column="id_festival" not-null="true" />
         <property column="superficie" name="superficie" type="double" />
         <property column="codigo_unico" name="codigoUnico" type="string" />
-        <set name="platosOfrecidos" table="plato" order-by="id_plato asc" inverse="true"
+        <set name="platosOfrecidos"  order-by="id_plato asc" inverse="true"
              lazy="true" fetch="select">
             <key column="id_unidad_de_venta" not-null="true" />
             <one-to-many class="datos.Plato" />
         </set>
-        <set name="personalACargo" table="staff" order-by="id_staff asc" inverse="true"
+        <set name="personalACargo"  order-by="id_staff asc" inverse="true"
              lazy="true" fetch="select">
             <key column="id_unidad_de_venta" not-null="true" />
             <one-to-many class="datos.Staff" />
