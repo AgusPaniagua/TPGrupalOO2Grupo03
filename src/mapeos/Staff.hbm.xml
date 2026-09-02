@@ -9,8 +9,8 @@
         <property column="nombre" name="nombre" type="string" />
         <property column="apellido" name="apellido" type="string" />
         <property column="dni" name="dni" type="int" />
-        <property column="fecha_de_nacimiento" name="fechaDeNacimiento" type="date" />
-        <property column="fecha_de_ingreso" name="fechaDeIngreso" type="date" />
+        <property column="fecha_de_nacimiento" name="fechaDeNacimiento" type="java.time.LocalDate" />
+        <property column="fecha_de_ingreso" name="fechaDeIngreso" type="java.time.LocalDate" />
         <property column="antiguedad" name="antiguedad" type="int" />
         <property column="sueldo_base" name="sueldoBase" type="double" />
 
