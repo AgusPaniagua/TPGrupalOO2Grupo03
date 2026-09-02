@@ -26,7 +26,7 @@
 | :--- | :--- |
 | CU01 - Listar unidades de venta por festival | `@AgusPaniagua` |
 | CU02 - Costo personal por unidad | `@FerFogonsa` |
-| CU02 - Traer festival y unidad de venta | `@sergiocdima` |
+| CU03 - Traer festival y unidad de venta | `@sergiocdima` |
 
 ---
 
