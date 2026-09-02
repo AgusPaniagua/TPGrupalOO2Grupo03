@@ -24,9 +24,9 @@
 
 | Caso de Uso / Funcionalidad | Responsable |
 | :--- | :--- |
-| Estructura inicial del proyecto y README | `@AgusPaniagua` |
-| CU01 - Registrar usuario | `@usuario1` |
-| CU02 - Asignar turnos | `@usuario2` |
+| CU01 - Listar unidades de venta por festival | `@AgusPaniagua` |
+| CU02 - Costo personal por unidad | `@FerFogonsa` |
+| CU02 - Traer festival y unidad de venta | `@sergiocdima` |
 
 ---
 
@@ -42,3 +42,4 @@
 ## 🚀 Cómo ejecutar el proyecto localmente
 
 1. **Clonar el repositorio:**
+2. **Ejectutar los test por orden**
